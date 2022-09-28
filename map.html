@@ -47,7 +47,10 @@
         var allMarkerLayer = L.layerGroup();
 
         let addMarker = (marker) => {
-            marker.popup = marker.name;
+            marker.popup = `<span style="font-size:110%"><strong>${marker.name}</strong></span>`;
+            marker.popup += `<BR>${marker.city}, ${marker.state}`;
+            marker.popup += `<BR><em>Undergrad enrollment: ${marker.undergrad}</em>`;
+            marker.popup += `<BR><em>Average SAT: ${marker.SAT_c_avg}</em>`;
 
             let goog_prefix = "https://google.com/search?q=";
             let goog_uri = goog_prefix + marker.name + ", " + marker.city + ", " + marker.state;
