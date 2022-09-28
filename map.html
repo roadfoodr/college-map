@@ -21,13 +21,22 @@
 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-</head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
 
 <body>
     <div id="map"></div>
     <script src="js/schools.js" /></script>
     <script src="js/map.js" /></script>
     <script>
+        SAT_domain = d3.extent(schools.map((school) => school.SAT_c_avg))
+        undergrad_domain = d3.extent(schools.map((school) => school.undergrad))
+        
+        colorScale = d3.scaleSequential()
+//            .interpolator(d3.interpolateRgb("purple", "orange"))
+            .interpolator(d3.interpolateViridis)
+            .domain(SAT_domain)
+      
         // var MOBILE = L.Browser.mobile ? true : false;
         <!-- feature group needed for getBounds() -->
         var allMarkerGroup = L.featureGroup();
@@ -38,10 +47,10 @@
 
             let goog_prefix = "https://google.com/search?q=";
             let goog_uri = goog_prefix + marker.name + ", " + marker.city + ", " + marker.state;
-
+            
             M = L.circleMarker([marker.lat, marker.long], {
-                    color: 'green',
-                    fillColor: 'green',
+                    color: colorScale(marker.SAT_c_avg),
+                    fillColor: colorScale(marker.SAT_c_avg),
                     fillOpacity: 0.6,
                     radius: 8,
                     goog_uri: goog_uri
