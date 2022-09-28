@@ -36,7 +36,11 @@
 //            .interpolator(d3.interpolateRgb("purple", "orange"))
             .interpolator(d3.interpolateViridis)
             .domain(SAT_domain)
-      
+        
+        areaScale = d3.scaleSqrt()
+            .domain(undergrad_domain)
+            .range([4, 12]);
+
         // var MOBILE = L.Browser.mobile ? true : false;
         <!-- feature group needed for getBounds() -->
         var allMarkerGroup = L.featureGroup();
@@ -52,7 +56,8 @@
                     color: colorScale(marker.SAT_c_avg),
                     fillColor: colorScale(marker.SAT_c_avg),
                     fillOpacity: 0.6,
-                    radius: 8,
+                    radius: areaScale(marker.undergrad),
+                    weight: 1.5,
                     goog_uri: goog_uri
                 })
                 .bindPopup("<div class='marker-popup'>" + marker.popup + "</div>")
