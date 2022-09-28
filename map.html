@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>College visits</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    <!--
+        <script src="https://kit.fontawesome.com/1d59cace02.js" 
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script src="js/schools.js" /></script>
+    <script src="js/map.js" /></script>
+    <script>
+        // var MOBILE = L.Browser.mobile ? true : false;
+        <!-- feature group needed for getBounds() -->
+        var allMarkerGroup = L.featureGroup();
+        var allMarkerLayer = L.layerGroup();
+
+        let addMarker = (marker) => {
+            marker.popup = marker.name;
+
+            let goog_prefix = "https://google.com/search?q=";
+            let goog_uri = goog_prefix + marker.name + ", " + marker.city + ", " + marker.state;
+
+            M = L.circleMarker([marker.lat, marker.long], {
+                    color: 'green',
+                    fillColor: 'green',
+                    fillOpacity: 0.6,
+                    radius: 8,
+                    goog_uri: goog_uri
+                })
+                .bindPopup("<div class='marker-popup'>" + marker.popup + "</div>")
+                .on('mouseover', function(e) {
+                    this.openPopup();
+                })
+                .on('mouseout', function(e) {
+                    this.closePopup();
+                })
+                .on('click', clickselect)
+                .addTo(allMarkerGroup)
+                .addTo(allMarkerLayer);
+        }
+
+        schools.forEach((marker) => addMarker(marker));
+
+
+        // https://github.com/domoritz/leaflet-locatecontrol
+        var lc = L.control.locate({
+            setView: false,
+            keepCurrentZoomLevel: true,
+            drawCircle: false,
+            showPopup: false,
+            strings: {
+                title: "Display current location"
+            }
+        }).addTo(map);
+
+        L.control.scale({
+            imperial: true,
+            metric: false
+        }).addTo(map);
+        
+        allMarkerLayer.addTo(map);
+
+        map.flyToBounds(allMarkerGroup.getBounds(), {
+            padding: [25, 25]
+        });
+        // required to enable map to handle keyboard commands right away        
+        //          document.getElementById('map').focus();
+    </script>
+
+</body>
+
+</html>
