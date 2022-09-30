@@ -19,3 +19,8 @@ html, body, #map {
 p {
     margin: 7.5% 0 7.5% 0;
 }
+
+.tracked {
+    stroke-dasharray: 1.5, 4;
+    stroke-width: 2;
+}

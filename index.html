@@ -44,7 +44,9 @@
             marker.popup += `<BR>${marker.city}, ${marker.state}`;
             marker.popup += `<BR><em>Undergrad enrollment: ${marker.undergrad}</em>`;
             marker.popup += `<BR><em>Average SAT: ${marker.SAT_c_avg}</em>`;
-
+            marker.popup += (marker.track == 'yes') ? 
+                `<BR><p style="font-size:87.5%">Tracked interest: ${marker.track}</p>` : '';
+            
             let goog_prefix = "https://google.com/search?q=";
             let goog_uri = `${goog_prefix}${marker.name}, ${marker.city}, ${marker.state}`;
             
@@ -54,7 +56,8 @@
                     fillOpacity: 0.6,
                     radius: areaScale(marker.undergrad),
                     weight: 1.5,
-                    goog_uri: goog_uri
+                    goog_uri: goog_uri,
+                    ...(marker.track == "yes" && { className: "tracked" }),
                 })
                 .bindPopup("<div class='marker-popup'>" + marker.popup + "</div>")
                 .on('mouseover', function(e) {
