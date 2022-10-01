@@ -20,6 +20,16 @@ var schools = [
         "lat": 41.8267718
     },
     {
+        "name": "Carnegie Mellon University",
+        "city": "Pittsburgh",
+        "state": "Pennsylvania",
+        "undergrad": 7365,
+        "SAT_c_avg": 1520,
+        "track": "no",
+        "long": -79.9428499,
+        "lat": 40.4432027
+    },
+    {
         "name": "Case Western Reserve University",
         "city": "Cleveland",
         "state": "Ohio",
@@ -38,6 +48,16 @@ var schools = [
         "track": "no",
         "long": -82.8367119,
         "lat": 34.673407
+    },
+    {
+        "name": "Columbia University",
+        "city": "New York",
+        "state": "New York",
+        "undergrad": 8148,
+        "SAT_c_avg": 1525,
+        "track": "no",
+        "long": -73.9625727,
+        "lat": 40.8075355
     },
     {
         "name": "Connecticut College",
@@ -140,6 +160,16 @@ var schools = [
         "lat": 29.7173941
     },
     {
+        "name": "Stanford University",
+        "city": "Palo Alto",
+        "state": "California",
+        "undergrad": 7645,
+        "SAT_c_avg": 1520,
+        "track": "no",
+        "long": -122.169719,
+        "lat": 37.4274745
+    },
+    {
         "name": "The University of Texas",
         "city": "Austin",
         "state": "Texas",
@@ -168,6 +198,36 @@ var schools = [
         "track": "yes",
         "long": -90.1203167,
         "lat": 29.9407282
+    },
+    {
+        "name": "University of California Berkeley",
+        "city": "Berkeley",
+        "state": "California",
+        "undergrad": 32479,
+        "SAT_c_avg": 1415,
+        "track": "no",
+        "long": -122.2585399,
+        "lat": 37.8718992
+    },
+    {
+        "name": "University of California Los Angeles",
+        "city": "Los Angeles",
+        "state": "California",
+        "undergrad": 30841,
+        "SAT_c_avg": 1405,
+        "track": "no",
+        "long": -118.4451811,
+        "lat": 34.068921
+    },
+    {
+        "name": "University of California San Diego",
+        "city": "San Diego",
+        "state": "California",
+        "undergrad": 33343,
+        "SAT_c_avg": 1360,
+        "track": "no",
+        "long": -117.2340135,
+        "lat": 32.8800604
     },
     {
         "name": "University of Chicago",
@@ -240,6 +300,26 @@ var schools = [
         "lat": 41.7001908
     },
     {
+        "name": "University of Oregon",
+        "city": "Eugene",
+        "state": "Oregon",
+        "undergrad": 18604,
+        "SAT_c_avg": 1220,
+        "track": "no",
+        "long": -123.0726055,
+        "lat": 44.0448302
+    },
+    {
+        "name": "University of Pennsylvania",
+        "city": "Philadelphia",
+        "state": "Pennsylvania",
+        "undergrad": 9962,
+        "SAT_c_avg": 1500,
+        "track": "no",
+        "long": -75.1932137,
+        "lat": 39.9522188
+    },
+    {
         "name": "University of Richmond",
         "city": "Richmond",
         "state": "Virginia",
@@ -258,6 +338,26 @@ var schools = [
         "track": "no",
         "long": -81.0299186,
         "lat": 33.9937575
+    },
+    {
+        "name": "University of Virginia",
+        "city": "Charlottesville",
+        "state": "Virginia",
+        "undergrad": 18066,
+        "SAT_c_avg": 1460,
+        "track": "no",
+        "long": -78.5079772,
+        "lat": 38.0335529
+    },
+    {
+        "name": "University of Washington",
+        "city": "Seattle",
+        "state": "Washington",
+        "undergrad": 32779,
+        "SAT_c_avg": 1340,
+        "track": "no",
+        "long": -122.3320708,
+        "lat": 47.6062095
     },
     {
         "name": "Vanderbilt University",
